@@ -1,5 +1,5 @@
 function Game(turn = new TurnSwitcher) {
-  this.turn = turn.currentTurn
+  this.turn = turn.getCurrentTurn()
   this.board = ['-', '-', '-', '-', '-', '-', '-', '-', '-']
 };
 
