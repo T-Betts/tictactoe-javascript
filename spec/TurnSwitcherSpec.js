@@ -1,23 +1,25 @@
 describe('TurnSwitcher', function(){
+
+  beforeEach(function(){
+    ts = new TurnSwitcher
+  });
+
   describe('switchTurn', function(){
     it('should switch current turn from "X" to "O"', function(){
-      ts = new TurnSwitcher
       ts.switchTurn()
-      expect(ts.currentTurn).toBe('O')
+      expect(ts.getCurrentTurn()).toBe('O')
     });
 
     it('should switch current turn from "O" to "X"', function(){
-      ts = new TurnSwitcher
       ts.switchTurn()
       ts.switchTurn()
-      expect(ts.currentTurn).toBe('X')
+      expect(ts.getCurrentTurn()).toBe('X')
     });
 
   });
 
   describe('getCurrentTurn', function(){
     it('should return the current turn', function(){
-      ts = new TurnSwitcher
       expect(ts.getCurrentTurn()).toEqual('X')
     });
   });
