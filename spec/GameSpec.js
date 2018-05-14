@@ -24,7 +24,7 @@ describe('Game', function(){
   describe('place', function(){
     it('can place symbol of current player in designated square', function(){
       game = new Game(xTurn)
-      game.place(this.board[4])
+      game.place(4)
       expect(game.showBoard()).toEqual([['-', '-', '-'], ['-', 'X', '-'], ['-', '-', '-']])
     });
   });

@@ -11,3 +11,7 @@ Game.prototype.showBoard = function() {
   }
   return rows;
 };
+
+Game.prototype.place = function (square) {
+  this.board[square] = this.turn
+};
