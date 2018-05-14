@@ -5,4 +5,11 @@ describe('Game', function(){
       expect(game.showBoard()).toEqual([['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']])
     });
   });
+
+  describe('turn', function(){
+    it('shows whose turn it is', function(){
+      game = new Game
+      expect(game.turn).toEqual("X")
+    });
+  });
 });
