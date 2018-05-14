@@ -21,7 +21,7 @@ describe('Game', function(){
 
   describe('turn', function(){
     it('shows whose turn it is', function(){
-      expect(newGame.turn).toEqual("X")
+      expect(newGame.turn.getCurrentTurn()).toEqual("X")
     });
   });
 
@@ -39,13 +39,15 @@ describe('Game', function(){
 
   describe('takeSquare', function(){
     it('places correct symbol in designated square', function(){
-      newGame.takeSquare(4)
-      expect(newGame.showBoard()).toEqual([['-', '-', '-'], ['-', 'X', '-'], ['-', '-', '-']])
+      game = new Game
+      game.takeSquare(4)
+      expect(game.showBoard()).toEqual([['-', '-', '-'], ['-', 'X', '-'], ['-', '-', '-']])
     });
 
     it('switches the turn', function(){
-      newGame.takeSquare(4)
-      expect(newGame.getCurrentTurn()).toEqual("O")
+      game2 = new Game
+      game2.takeSquare(4)
+      expect(game2.turn.getCurrentTurn()).toEqual("O")
     });
   });
 });

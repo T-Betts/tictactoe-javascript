@@ -1,5 +1,5 @@
 function Game(turn = new TurnSwitcher) {
-  this.turn = turn.getCurrentTurn()
+  this.turn = turn
   this.board = ['-', '-', '-', '-', '-', '-', '-', '-', '-']
 };
 
@@ -13,5 +13,10 @@ Game.prototype.showBoard = function() {
 };
 
 Game.prototype.place = function (square) {
-  this.board[square] = this.turn
+  this.board[square] = this.turn.getCurrentTurn()
+};
+
+Game.prototype.takeSquare = function (square) {
+  this.place(square)
+  this.turn.switchTurn()
 };
