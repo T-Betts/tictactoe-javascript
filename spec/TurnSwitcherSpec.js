@@ -12,5 +12,13 @@ describe('TurnSwitcher', function(){
       ts.switchTurn()
       expect(ts.currentTurn).toBe('X')
     });
+
+  });
+
+  describe('getCurrentTurn', function(){
+    it('should return the current turn', function(){
+      ts = new TurnSwitcher
+      expect(ts.getCurrentTurn()).toEqual('X')
+    });
   });
 });
