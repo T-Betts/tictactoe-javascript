@@ -20,4 +20,12 @@ describe('Game', function(){
       expect(game.turn).toEqual("X")
     });
   });
+
+  describe('place', function(){
+    it('can place symbol of current player in designated square', function(){
+      game = new Game(xTurn)
+      game.place(this.board[4])
+      expect(game.showBoard()).toEqual([['-', '-', '-'], ['-', 'X', '-'], ['-', '-', '-']])
+    });
+  });
 });
