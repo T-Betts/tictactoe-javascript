@@ -30,12 +30,22 @@ describe('Game', function(){
       newGame.place(4)
       expect(newGame.showBoard()).toEqual([['-', '-', '-'], ['-', 'X', '-'], ['-', '-', '-']])
     });
-  });
 
-  describe('place', function(){
     it('can place "O" in designated square when currentTurn is "O"', function(){
       oMoveGame.place(4)
       expect(oMoveGame.showBoard()).toEqual([['-', '-', '-'], ['-', 'O', '-'], ['-', '-', '-']])
+    });
+  });
+
+  describe('takeSquare', function(){
+    it('places correct symbol in designated square', function(){
+      newGame.takeSquare(4)
+      expect(newGame.showBoard()).toEqual([['-', '-', '-'], ['-', 'X', '-'], ['-', '-', '-']])
+    });
+
+    it('switches the turn', function(){
+      newGame.takeSquare(4)
+      expect(newGame.getCurrentTurn()).toEqual("O")
     });
   });
 });
