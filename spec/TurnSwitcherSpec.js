@@ -15,7 +15,6 @@ describe('TurnSwitcher', function(){
       ts.switchTurn()
       expect(ts.getCurrentTurn()).toBe('X')
     });
-
   });
 
   describe('getCurrentTurn', function(){

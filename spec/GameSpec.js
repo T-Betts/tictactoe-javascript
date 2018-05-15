@@ -6,10 +6,12 @@ describe('Game', function(){
   beforeEach(function(){
     newGame = new Game(xTurn);
 
-    xTurn = jasmine.createSpyObj('xTurn',['getCurrentTurn']);
-    xTurn.getCurrentTurn.and.returnValue("X");
-    oTurn = jasmine.createSpyObj('oTurn',['getCurrentTurn']);
-    oTurn.getCurrentTurn.and.returnValue("O");
+    xTurn = jasmine.createSpyObj('xTurn',['getCurrentTurn', 'switchTurn']);
+    xTurn.getCurrentTurn.and.returnValue('X');
+    xTurn.switchTurn.and.returnValue('O')
+    oTurn = jasmine.createSpyObj('oTurn',['getCurrentTurn', 'switchTurn']);
+    oTurn.getCurrentTurn.and.returnValue('O');
+    oTurn.switchTurn.and.returnValue('X')
   });
 
   describe('showBoard', function(){
@@ -31,23 +33,21 @@ describe('Game', function(){
     });
 
     it('can place "O" in designated square when currentTurn is "O"', function(){
-      oMoveGame = new Game(oTurn);
+      oMoveGame = new Game(turn = oTurn);
       oMoveGame.place(5)
       expect(oMoveGame.showBoard()).toEqual([['-', '-', '-'], ['-', '-', 'O'], ['-', '-', '-']])
     });
 
     it('throws error when trying to place symbol in already occupied square', function(){
-      game = new Game
-      game.takeSquare(1)
-      expect( function(){ game.takeSquare(1) } ).toThrow("Square already taken.")
+      newGame.takeSquare(1)
+      expect( function(){ newGame.takeSquare(1) } ).toThrow("Square already taken.")
     });
   });
 
   describe('takeSquare', function(){
     it('places correct symbol in designated square', function(){
-      game = new Game
-      game.takeSquare(4)
-      expect(game.showBoard()).toEqual([['-', '-', '-'], ['-', 'X', '-'], ['-', '-', '-']])
+      newGame.takeSquare(4)
+      expect(newGame.showBoard()).toEqual([['-', '-', '-'], ['-', 'X', '-'], ['-', '-', '-']])
     });
 
     it('switches the turn', function(){
