@@ -16,7 +16,7 @@ describe('Game', function(){
 
   describe('showBoard', function(){
     it('shows the current state of the board', function(){
-      expect(newGame.showBoard()).toEqual([['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']])
+      expect(newGame.returnBoard()).toEqual(['-', '-', '-', '-', '-', '-', '-', '-', '-'])
     });
   });
 
@@ -35,13 +35,13 @@ describe('Game', function(){
   describe('place', function(){
     it('can place "X" in designated square when currentTurn is "X"', function(){
       newGame.place(3)
-      expect(newGame.showBoard()).toEqual([['-', '-', '-'], ['X', '-', '-'], ['-', '-', '-']])
+      expect(newGame.returnBoard()).toEqual(['-', '-', '-', 'X', '-', '-', '-', '-', '-'])
     });
 
     it('can place "O" in designated square when currentTurn is "O"', function(){
       oMoveGame = new Game(turn = oTurn);
       oMoveGame.place(5)
-      expect(oMoveGame.showBoard()).toEqual([['-', '-', '-'], ['-', '-', 'O'], ['-', '-', '-']])
+      expect(oMoveGame.returnBoard()).toEqual(['-', '-', '-', '-', '-', 'O', '-', '-', '-'])
     });
 
     it('throws error when trying to place symbol in already occupied square', function(){
@@ -53,7 +53,7 @@ describe('Game', function(){
   describe('takeSquare', function(){
     it('places correct symbol in designated square', function(){
       newGame.takeSquare(4)
-      expect(newGame.showBoard()).toEqual([['-', '-', '-'], ['-', 'X', '-'], ['-', '-', '-']])
+      expect(newGame.returnBoard()).toEqual(['-', '-', '-', '-', 'X', '-', '-', '-', '-'])
     });
 
     it('switches the turn', function(){
