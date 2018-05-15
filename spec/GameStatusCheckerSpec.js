@@ -1,10 +1,8 @@
 describe('GameStatusChecker', function(){
   let victoryGame;
-  let noVictoryGame;
 
   beforeEach(function(){
-    victoryGSC = new GameStatusChecker(victoryGame)
-    noVictoryGSC = new GameStatusChecker(noVictoryGame)
+    gameStatusChecker = new GameStatusChecker;
 
     victoryGame = jasmine.createSpyObj('victoryGame',['showBoard']);
     victoryGame.showBoard.and.returnValue([['X', 'X', 'X'], ['-', '-', '-'], ['-', '-', '-']]);
@@ -12,7 +10,7 @@ describe('GameStatusChecker', function(){
 
   describe('isGameWon', function(){
     it('should return true if game has been won', function(){
-      expect(victoryGSC.isGameWon()).toEqual(true)
+      expect(gameStatusChecker.isGameWon(victoryGame.showBoard())).toEqual(true)
     });
   });
 });
