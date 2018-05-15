@@ -12,6 +12,10 @@ Game.prototype.showBoard = function() {
   return rows;
 };
 
+Game.prototype.returnBoard = function () {
+  return this.board
+};
+
 Game.prototype.place = function (square) {
   if (this.board[square] != "-"){
     throw "Square already taken."
