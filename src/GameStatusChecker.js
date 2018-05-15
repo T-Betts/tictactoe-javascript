@@ -17,3 +17,13 @@ GameStatusChecker.prototype.isGameWon = function (game) {
       }
     return false
 };
+
+GameStatusChecker.prototype.isBoardFull = function (game) {
+  arr = []
+  for (var i = 0; i < game.returnBoard().length; i++) {
+    if (game.returnBoard()[i] == '-'){
+      arr.push('-')
+    }
+  }
+  return arr.length == 0
+};
