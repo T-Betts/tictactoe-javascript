@@ -5,7 +5,6 @@ describe('Game', function(){
 
   beforeEach(function(){
     newGame = new Game(xTurn);
-    oMoveGame = new Game(oTurn)
 
     xTurn = jasmine.createSpyObj('xTurn',['getCurrentTurn']);
     xTurn.getCurrentTurn.and.returnValue("X");
@@ -27,13 +26,14 @@ describe('Game', function(){
 
   describe('place', function(){
     it('can place "X" in designated square when currentTurn is "X"', function(){
-      newGame.place(4)
-      expect(newGame.showBoard()).toEqual([['-', '-', '-'], ['-', 'X', '-'], ['-', '-', '-']])
+      newGame.place(3)
+      expect(newGame.showBoard()).toEqual([['-', '-', '-'], ['X', '-', '-'], ['-', '-', '-']])
     });
 
     it('can place "O" in designated square when currentTurn is "O"', function(){
-      oMoveGame.place(4)
-      expect(oMoveGame.showBoard()).toEqual([['-', '-', '-'], ['-', 'O', '-'], ['-', '-', '-']])
+      oMoveGame = new Game(oTurn);
+      oMoveGame.place(5)
+      expect(oMoveGame.showBoard()).toEqual([['-', '-', '-'], ['-', '-', 'O'], ['-', '-', '-']])
     });
   });
 
@@ -45,9 +45,9 @@ describe('Game', function(){
     });
 
     it('switches the turn', function(){
-      game2 = new Game
-      game2.takeSquare(4)
-      expect(game2.turn.getCurrentTurn()).toEqual("O")
+      game = new Game
+      game.takeSquare(4)
+      expect(game.turn.getCurrentTurn()).toEqual("O")
     });
   });
 });
