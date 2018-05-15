@@ -4,12 +4,14 @@ describe('GameStatusChecker', function(){
   beforeEach(function(){
     gameStatusChecker = new GameStatusChecker;
 
-    victoryBoard = ['X', 'X', 'X', '-', '-', '-', '-', '-', '-']
+    victoryGame = jasmine.createSpyObj('victoryGame',['returnBoard', 'showTurn']);
+    victoryGame.showTurn.and.returnValue('X');
+    victoryGame.returnBoard.and.returnValue(['X', '-', '-', '-', 'X', '-', '-', '-', 'X'])
   });
 
   describe('isGameWon', function(){
     it('should return true if game has been won', function(){
-      expect(gameStatusChecker.isGameWon(victoryBoard)).toEqual(true)
+      expect(gameStatusChecker.isGameWon(victoryGame)).toEqual(true)
     });
   });
 });
