@@ -1,6 +1,7 @@
 describe('GameStatusChecker', function(){
   let victoryGame;
   let noVictoryGame;
+  let fullBoardGame;
 
   beforeEach(function(){
     gameStatusChecker = new GameStatusChecker;
@@ -11,6 +12,8 @@ describe('GameStatusChecker', function(){
     noVictoryGame = jasmine.createSpyObj('noVictoryGame',['returnBoard', 'showTurn']);
     noVictoryGame.showTurn.and.returnValue('X');
     noVictoryGame.returnBoard.and.returnValue(['O', 'X', 'O', '-', 'X', '-', '-', '-', 'X'])
+    fullBoardGame = jasmine.createSpyObj('fullBoardGame',['returnBoard']);
+    fullBoardGame.returnBoard.and.returnValue(['O', 'X', 'O', 'X', 'X', 'O', 'O', 'O', 'X'])
   });
 
   describe('isGameWon', function(){
@@ -20,6 +23,12 @@ describe('GameStatusChecker', function(){
 
     it('should return false if the game has not been won', function(){
       expect(gameStatusChecker.isGameWon(noVictoryGame)).toEqual(false)
+    });
+  });
+
+  describe('isBoardFull', function(){
+    it('should return true if the board is full', function(){
+      expect(gameStatusChecker.isBoardFull(fullBoardGame)).toEqual(true)
     });
   });
 });
