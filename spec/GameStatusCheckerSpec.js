@@ -30,5 +30,9 @@ describe('GameStatusChecker', function(){
     it('should return true if the board is full', function(){
       expect(gameStatusChecker.isBoardFull(fullBoardGame)).toEqual(true)
     });
+
+    it('should return false if the board is not full', function(){
+      expect(gameStatusChecker.isBoardFull(noVictoryGame)).toEqual(false)
+    });
   });
 });
