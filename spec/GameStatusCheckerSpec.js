@@ -35,4 +35,10 @@ describe('GameStatusChecker', function(){
       expect(gameStatusChecker.isBoardFull(noVictoryGame)).toEqual(false)
     });
   });
+
+  describe('isGameDrawn', function(){
+    it('should return true if the game has been drawn', function(){
+      expect(gameStatusChecker.isGameDrawn(fullBoardGame)).toEqual(true)
+    });
+  });
 });
