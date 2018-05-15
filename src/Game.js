@@ -18,8 +18,3 @@ Game.prototype.place = function (square) {
       this.board[square] = this.turn.getCurrentTurn()
     }
 };
-
-Game.prototype.takeSquare = function (square) {
-  this.place(square)
-  this.turn.switchTurn()
-};

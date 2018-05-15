@@ -45,21 +45,8 @@ describe('Game', function(){
     });
 
     it('throws error when trying to place symbol in already occupied square', function(){
-      newGame.takeSquare(1)
-      expect( function(){ newGame.takeSquare(1) } ).toThrow("Square already taken.")
-    });
-  });
-
-  describe('takeSquare', function(){
-    it('places correct symbol in designated square', function(){
-      newGame.takeSquare(4)
-      expect(newGame.returnBoard()).toEqual(['-', '-', '-', '-', 'X', '-', '-', '-', '-'])
-    });
-
-    it('switches the turn', function(){
-      game = new Game
-      game.takeSquare(4)
-      expect(game.turn.getCurrentTurn()).toEqual("O")
+      newGame.place(1)
+      expect( function(){ newGame.place(1) } ).toThrow("Square already taken.")
     });
   });
 });
