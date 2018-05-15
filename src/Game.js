@@ -13,7 +13,11 @@ Game.prototype.showBoard = function() {
 };
 
 Game.prototype.place = function (square) {
-  this.board[square] = this.turn.getCurrentTurn()
+  if (this.board[square] != "-"){
+    throw "Square already taken."
+  } else {
+      this.board[square] = this.turn.getCurrentTurn()
+    }
 };
 
 Game.prototype.takeSquare = function (square) {
