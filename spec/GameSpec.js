@@ -35,6 +35,12 @@ describe('Game', function(){
       oMoveGame.place(5)
       expect(oMoveGame.showBoard()).toEqual([['-', '-', '-'], ['-', '-', 'O'], ['-', '-', '-']])
     });
+
+    it('throws error when trying to place symbol in already occupied square', function(){
+      game = new Game
+      game.takeSquare(1)
+      expect( function(){ game.takeSquare(1) } ).toThrow("Square already taken.")
+    });
   });
 
   describe('takeSquare', function(){
