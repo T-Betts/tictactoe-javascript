@@ -15,4 +15,5 @@ GameStatusChecker.prototype.isGameWon = function (game) {
       break;
     }
       }
+    return false
 };
