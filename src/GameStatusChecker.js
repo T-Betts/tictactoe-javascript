@@ -27,3 +27,7 @@ GameStatusChecker.prototype.isBoardFull = function (game) {
   }
   return arr.length == 0
 };
+
+GameStatusChecker.prototype.isGameDrawn = function (game) {
+  return this.isBoardFull(game) && !this.isGameWon(game)
+};

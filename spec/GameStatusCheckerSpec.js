@@ -12,8 +12,9 @@ describe('GameStatusChecker', function(){
     noVictoryGame = jasmine.createSpyObj('noVictoryGame',['returnBoard', 'showTurn']);
     noVictoryGame.showTurn.and.returnValue('X');
     noVictoryGame.returnBoard.and.returnValue(['O', 'X', 'O', '-', 'X', '-', '-', '-', 'X'])
-    fullBoardGame = jasmine.createSpyObj('fullBoardGame',['returnBoard']);
+    fullBoardGame = jasmine.createSpyObj('fullBoardGame',['returnBoard', 'showTurn']);
     fullBoardGame.returnBoard.and.returnValue(['O', 'X', 'O', 'X', 'X', 'O', 'O', 'O', 'X'])
+    fullBoardGame.showTurn.and.returnValue('X');
   });
 
   describe('isGameWon', function(){
