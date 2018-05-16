@@ -12,9 +12,11 @@ describe('Game', function(){
     oTurn = jasmine.createSpyObj('oTurn',['getCurrentTurn', 'switchTurn']);
     oTurn.getCurrentTurn.and.returnValue('O');
     oTurn.switchTurn.and.returnValue('X')
+    yTurn = jasmine.createSpyObj('yTurn',['getCurrentTurn']);
+    yTurn.getCurrentTurn.and.returnValue('Y');
   });
 
-  describe('showBoard', function(){
+  describe('returnBoard', function(){
     it('shows the current state of the board', function(){
       expect(newGame.returnBoard()).toEqual(['-', '-', '-', '-', '-', '-', '-', '-', '-'])
     });
@@ -48,5 +50,14 @@ describe('Game', function(){
       newGame.place(1)
       expect( function(){ newGame.place(1) } ).toThrow("Square already taken.")
     });
+
+    it('throws error when trying to place symbol in already occupied square', function(){
+      yGame = new Game(yTurn)
+      for (var i = 0; i < yGame.board.length; i++) {
+        yGame.place([i])
+      };
+      console.log(yGame.returnBoard())
+      expect( function(){ yGame.place(1) } ).toThrow("Game is over.")
+    })
   });
 });
