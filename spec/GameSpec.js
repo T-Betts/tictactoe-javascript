@@ -17,20 +17,14 @@ describe('Game', function(){
   });
 
   describe('returnBoard', function(){
-    it('shows the current state of the board', function(){
-      expect(newGame.returnBoard()).toEqual(['-', '-', '-', '-', '-', '-', '-', '-', '-'])
-    });
-  });
-
-  describe('returnBoard', function(){
     it('should return board', function(){
       expect(newGame.returnBoard()).toEqual(['-', '-', '-', '-', '-', '-', '-', '-', '-'])
     });
   });
 
-  describe('turn', function(){
+  describe('showTurn', function(){
     it('shows whose turn it is', function(){
-      expect(newGame.turn.getCurrentTurn()).toEqual("X")
+      expect(newGame.showTurn()).toEqual("X")
     });
   });
 

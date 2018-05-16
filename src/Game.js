@@ -1,5 +1,5 @@
-function Game(turn = new TurnSwitcher) {
-  this.turn = turn
+function Game(turnswitcher = new TurnSwitcher) {
+  this.turnswitcher = turnswitcher
   this.board = ['-', '-', '-', '-', '-', '-', '-', '-', '-']
 };
 
@@ -8,7 +8,7 @@ Game.prototype.returnBoard = function () {
 };
 
 Game.prototype.showTurn = function () {
-  return this.turn
+  return this.turnswitcher.getCurrentTurn()
 };
 
 Game.prototype.place = function (square, gsc = new GameStatusChecker) {
@@ -17,6 +17,6 @@ Game.prototype.place = function (square, gsc = new GameStatusChecker) {
   } else if (this.board[square] != "-"){
     throw "Square already taken."
   } else {
-      this.board[square] = this.turn.getCurrentTurn()
+      this.board[square] = this.showTurn()
     }
 };
