@@ -56,7 +56,6 @@ describe('Game', function(){
       for (var i = 0; i < yGame.board.length; i++) {
         yGame.place([i])
       };
-      console.log(yGame.returnBoard())
       expect( function(){ yGame.place(1) } ).toThrow("Game is over.")
     })
   });
