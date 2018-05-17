@@ -10,10 +10,10 @@ describe('Game', function(){
       expect(game.board.returnBoard()[4]).toEqual('X')
     });
 
-    // it('switches the turn if a symbol was placed', function(){
-    //   game.makeMove(4)
-    //   expect(game.board.turnswitcher.getCurrentTurn()).toEqual('O')
-    // });
+    it('checks the game status after calling place', function(){
+      game.makeMove(4)
+      expect(game.board.turnswitcher.getCurrentTurn()).toEqual('O')
+    });
   });
 
   describe('checkStatus', function(){
