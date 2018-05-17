@@ -4,8 +4,12 @@ function Game(board = new Board){
 };
 
 Game.prototype.makeMove = function (square) {
-  this.board.place(square)
-  this.checkStatus()
+  if (this.winner != null){
+    throw "Game is over."
+  } else{
+    this.board.place(square)
+    this.checkStatus()
+  }
 };
 
 Game.prototype.checkStatus = function (gsc = new GameStatusChecker) {
