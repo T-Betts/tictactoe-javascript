@@ -14,6 +14,13 @@ describe('Game', function(){
       game.makeMove(4)
       expect(game.board.turnswitcher.getCurrentTurn()).toEqual('O')
     });
+
+    it('raises error if the game has been won', function(){
+      for (var i = 0; i < game.board.returnBoard().length - 2; i++) {
+        game.makeMove([i])
+      };
+      expect( function(){ game.makeMove(8) } ).toThrow("Game is over.")
+    });
   });
 
   describe('checkStatus', function(){
