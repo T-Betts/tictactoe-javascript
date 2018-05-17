@@ -10,10 +10,10 @@ describe('Game', function(){
       expect(game.board.returnBoard()[4]).toEqual('X')
     });
 
-    it('switches the turn if a symbol was placed', function(){
-      game.makeMove(4)
-      expect(game.board.turnswitcher.getCurrentTurn()).toEqual('O')
-    });
+    // it('switches the turn if a symbol was placed', function(){
+    //   game.makeMove(4)
+    //   expect(game.board.turnswitcher.getCurrentTurn()).toEqual('O')
+    // });
   });
 
   describe('checkStatus', function(){
@@ -21,6 +21,7 @@ describe('Game', function(){
       for (var i = 0; i < game.board.returnBoard().length - 2; i++) {
         game.makeMove([i])
       };
+      console.log(game.board.returnBoard())
       expect(game.checkStatus()).toEqual("Congratulations X, you are the winner!")
     });
   });

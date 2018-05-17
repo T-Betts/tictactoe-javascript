@@ -6,11 +6,11 @@ function GameStatusChecker(){
     ]
 }
 
-GameStatusChecker.prototype.isGameWon = function (game) {
+GameStatusChecker.prototype.isGameWon = function (board) {
   for (var i = 0; i < this.winningLines.length; i++) {
-    if (game.showTurn() == game.returnBoard()[this.winningLines[i][0]]
-    && game.returnBoard()[this.winningLines[i][0]] == game.returnBoard()[this.winningLines[i][1]]
-    && game.returnBoard()[this.winningLines[i][1]] == game.returnBoard()[this.winningLines[i][2]]){
+    if (board.showTurn() == board.returnBoard()[this.winningLines[i][0]]
+    && board.returnBoard()[this.winningLines[i][0]] == board.returnBoard()[this.winningLines[i][1]]
+    && board.returnBoard()[this.winningLines[i][1]] == board.returnBoard()[this.winningLines[i][2]]){
       return true
       break;
     }
