@@ -21,7 +21,6 @@ describe('Game', function(){
       for (var i = 0; i < game.board.returnBoard().length - 2; i++) {
         game.makeMove([i])
       };
-      console.log(game.board.returnBoard())
       expect(game.checkStatus()).toEqual("Congratulations X, you are the winner!")
     });
 
