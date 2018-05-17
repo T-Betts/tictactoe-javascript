@@ -24,5 +24,9 @@ describe('Game', function(){
       console.log(game.board.returnBoard())
       expect(game.checkStatus()).toEqual("Congratulations X, you are the winner!")
     });
+
+    it('switches the turn if the game is not over', function(){
+      expect(game.checkStatus()).toEqual("O. It's your move")
+    });
   });
 });
