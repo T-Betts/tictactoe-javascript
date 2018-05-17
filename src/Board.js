@@ -1,17 +1,17 @@
-function Game(turnswitcher = new TurnSwitcher) {
+function Board(turnswitcher = new TurnSwitcher) {
   this.turnswitcher = turnswitcher
   this.board = ['-', '-', '-', '-', '-', '-', '-', '-', '-']
 };
 
-Game.prototype.returnBoard = function () {
+Board.prototype.returnBoard = function () {
   return this.board
 };
 
-Game.prototype.showTurn = function () {
+Board.prototype.showTurn = function () {
   return this.turnswitcher.getCurrentTurn()
 };
 
-Game.prototype.place = function (square, gsc = new GameStatusChecker) {
+Board.prototype.place = function (square, gsc = new GameStatusChecker) {
   if (gsc.isBoardFull(this)){
     throw "Game is over."
   } else if (this.board[square] != "-"){

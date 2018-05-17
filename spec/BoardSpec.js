@@ -1,10 +1,10 @@
-describe('Game', function(){
+describe('Board', function(){
 
   let xTurn;
   let oTurn;
 
   beforeEach(function(){
-    newGame = new Game(xTurn);
+    newBoard = new Board(xTurn);
 
     xTurn = jasmine.createSpyObj('xTurn',['getCurrentTurn', 'switchTurn']);
     xTurn.getCurrentTurn.and.returnValue('X');
@@ -18,39 +18,39 @@ describe('Game', function(){
 
   describe('returnBoard', function(){
     it('should return board', function(){
-      expect(newGame.returnBoard()).toEqual(['-', '-', '-', '-', '-', '-', '-', '-', '-'])
+      expect(newBoard.returnBoard()).toEqual(['-', '-', '-', '-', '-', '-', '-', '-', '-'])
     });
   });
 
   describe('showTurn', function(){
     it('shows whose turn it is', function(){
-      expect(newGame.showTurn()).toEqual("X")
+      expect(newBoard.showTurn()).toEqual("X")
     });
   });
 
   describe('place', function(){
     it('can place "X" in designated square when currentTurn is "X"', function(){
-      newGame.place(3)
-      expect(newGame.returnBoard()).toEqual(['-', '-', '-', 'X', '-', '-', '-', '-', '-'])
+      newBoard.place(3)
+      expect(newBoard.returnBoard()).toEqual(['-', '-', '-', 'X', '-', '-', '-', '-', '-'])
     });
 
     it('can place "O" in designated square when currentTurn is "O"', function(){
-      oMoveGame = new Game(turn = oTurn);
-      oMoveGame.place(5)
-      expect(oMoveGame.returnBoard()).toEqual(['-', '-', '-', '-', '-', 'O', '-', '-', '-'])
+      oMoveBoard = new Board(turn = oTurn);
+      oMoveBoard.place(5)
+      expect(oMoveBoard.returnBoard()).toEqual(['-', '-', '-', '-', '-', 'O', '-', '-', '-'])
     });
 
     it('throws error when trying to place symbol in already occupied square', function(){
-      newGame.place(1)
-      expect( function(){ newGame.place(1) } ).toThrow("Square already taken.")
+      newBoard.place(1)
+      expect( function(){ newBoard.place(1) } ).toThrow("Square already taken.")
     });
 
     it('throws error when trying to place symbol in already occupied square', function(){
-      yGame = new Game(yTurn)
-      for (var i = 0; i < yGame.board.length; i++) {
-        yGame.place([i])
+      yBoard = new Board(yTurn)
+      for (var i = 0; i < yBoard.board.length; i++) {
+        yBoard.place([i])
       };
-      expect( function(){ yGame.place(1) } ).toThrow("Game is over.")
+      expect( function(){ yBoard.place(1) } ).toThrow("Game is over.")
     })
   });
 });
