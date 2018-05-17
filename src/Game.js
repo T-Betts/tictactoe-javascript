@@ -4,6 +4,7 @@ function Game(board = new Board){
 
 Game.prototype.makeMove = function (square) {
   this.board.place(square)
+  this.checkStatus()
 };
 
 Game.prototype.checkStatus = function (gsc = new GameStatusChecker) {
