@@ -27,5 +27,16 @@ describe('Game', function(){
     it('switches the turn if the game is not over', function(){
       expect(game.checkStatus()).toEqual("O. It's your move")
     });
+
+    it('checks whether game has been drawn', function(){
+      for (var i = 0; i < game.board.returnBoard().length - 3; i++) {
+        game.makeMove([i])
+      };
+      game.board.turnswitcher.switchTurn()
+      for (var i = 6; i < 9; i++) {
+        game.makeMove([i])
+      };
+      expect(game.checkStatus()).toEqual('Game is a draw')
+    });
   });
 });
