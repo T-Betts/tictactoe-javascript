@@ -38,5 +38,12 @@ describe('Game', function(){
       };
       expect(game.checkStatus()).toEqual('Game is a draw')
     });
+
+    it('should declare a winner if the game has been won', function(){
+      for (var i = 0; i < game.board.returnBoard().length - 2; i++) {
+        game.makeMove([i])
+      };
+      expect(game.winner).toEqual('X')
+    });
   });
 });
