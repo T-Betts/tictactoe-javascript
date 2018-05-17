@@ -15,4 +15,13 @@ describe('Game', function(){
       expect(game.board.turnswitcher.getCurrentTurn()).toEqual('O')
     });
   });
+
+  describe('checkStatus', function(){
+    it('checks whether game has been won', function(){
+      for (var i = 0; i < game.board.returnBoard().length - 2; i++) {
+        game.makeMove([i])
+      };
+      expect(game.checkStatus()).toEqual("Congratulations X, you are the winner!")
+    });
+  });
 });
